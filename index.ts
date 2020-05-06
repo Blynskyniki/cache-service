@@ -1,5 +1,6 @@
+import { EngineAbstract } from './Engines/Abstract';
 import { MemoryEngine } from './Engines/Memory';
-import { IEngine, IOptions } from './Interfaces';
+import {  IOptions } from './Interfaces';
 
 /**
  * ttl in seconds
@@ -7,7 +8,7 @@ import { IEngine, IOptions } from './Interfaces';
 export class CacheService<T = any> {
   private static _instance: CacheService | null;
   private _data: T | null;
-  private _engine: IEngine<T>;
+  private _engine: EngineAbstract<T>;
   private _ttl: number;
   private set data(value: T | null) {
     this._data = value;
@@ -24,13 +25,19 @@ export class CacheService<T = any> {
     return this._instance;
   }
 
-  public async set(data: T, ttl): Promise<string> {
-    return this._engine.set(data, ttl);
+  public async set(data: T, ttl?: number): Promise<string> {
+    return this._engine.set(data, ttl || this._ttl);
   }
-  public async get(key: string): Promise<T | null> {
+  public async get(key: string): Promise<T | undefined> {
     return this._engine.get(key);
   }
   public async del(key: string): Promise<void> {
     return this._engine.del(key);
+  }
+  public async setAutoUpdateCache(fn: () => Promise<T>, refreshTtl?: number): Promise<string> {
+    return this._engine.setAutoUpdateCache(fn, refreshTtl || this._ttl);
+  }
+  public async mget(keys: string[]): Promise<Array<T | undefined>> {
+    return this._engine.mget(keys);
   }
 }

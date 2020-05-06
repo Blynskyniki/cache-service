@@ -1,4 +1,3 @@
-import { MemoryEngine } from '../Engines/Memory';
 import { CacheService } from '../index';
 
 describe('Check', () => {

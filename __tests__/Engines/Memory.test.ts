@@ -6,7 +6,7 @@ describe('Check', () => {
     jest.clearAllTimers();
   });
 
-  test('Memory engine ttl', async () => {
+  test('Memory engine: ttl', async () => {
     jest.useFakeTimers();
     const service = new MemoryEngine<string>();
     const key = await service.set('testString', 5);
@@ -16,7 +16,7 @@ describe('Check', () => {
     console.log('after', service['_storage']);
     expect(service['_storage'].has(key)).toBe(false);
   });
-  test('Memory engine set/get', async () => {
+  test('Memory engine: set/get', async () => {
     jest.useFakeTimers();
     const service = new MemoryEngine<object>();
     const cacheObj = {
@@ -28,7 +28,18 @@ describe('Check', () => {
     const data = await service.get(key);
     expect(cacheObj).toEqual(data);
   });
-  test('Memory engine set/del', async () => {
+  test('Memory engine: mget', async () => {
+    jest.useFakeTimers();
+    const service = new MemoryEngine<string>();
+
+    const key1 = await service.set('test1', 5);
+    const key2 = await service.set('test2', 5);
+
+    const all = await service.mget([key1, key2]);
+    console.log(all);
+    expect(all).toEqual(['test1', 'test2']);
+  });
+  test('Memory engine: set/del', async () => {
     jest.useFakeTimers();
     const service = new MemoryEngine<object>();
     const cacheObj = {
