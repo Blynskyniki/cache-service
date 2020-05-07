@@ -7,12 +7,9 @@ import {  IOptions } from './Interfaces';
  */
 export class CacheService<T = any> {
   private static _instance: CacheService | null;
-  private _data: T | null;
   private _engine: EngineAbstract<T>;
   private _ttl: number;
-  private set data(value: T | null) {
-    this._data = value;
-  }
+
   private constructor(opts: IOptions) {
     this._ttl = opts.ttl;
     this._engine = opts.engine || new MemoryEngine();
