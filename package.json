@@ -14,12 +14,15 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.5",
     "jest": "25.2.1",
     "prettier": "^1.18.2",
     "ts-jest": "^24.0.2",
     "ts-node": "^7.0.0",
     "tslint": "^5.18.0",
     "tslint-config-prettier": "^1.10.0",
+
     "typescript": "^3.7.3"
   },
   "keywords": [
@@ -28,8 +31,6 @@
   "author": "BlynskyNiki",
   "license": "ISC",
   "dependencies": {
-    "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.5",
     "uuid": "^8.0.0"
   }
 }
