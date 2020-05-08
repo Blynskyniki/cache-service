@@ -1,8 +1,9 @@
 {
   "name": "typed-cache",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
   "main": "index.js",
+  "description": "Library for caching data with many engines(memory,redis,etc...).",
+  "homepage": "https://github.com/Blynskyniki/cache-service#readme",
   "scripts": {
     "test": "rm -rf ./dist && ./node_modules/.bin/jest -i --coverage --forceExit",
     "copyData": "cp package.json ./dist/package.json && cp ./README.md  ./dist/README.md ",
@@ -26,7 +27,8 @@
     "typescript": "^3.7.3"
   },
   "keywords": [
-    "cache"
+    "cache",
+    "typecript"
   ],
   "author": "BlynskyNiki",
   "license": "ISC",

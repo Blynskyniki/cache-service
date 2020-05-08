@@ -1,4 +1,4 @@
-##Library for caching data with many engines(memory,redis,etc...). Every instance typed from your data. If you wont create custom engine, please use EngineAbstract<T>.
+##Library for caching data with many engines(memory,redis,etc...). Every instance typed from your data. If you want create custom engine, please use EngineAbstract<T>.
 
 ### Exapmles:   
 ```typescript
