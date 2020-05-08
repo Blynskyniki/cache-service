@@ -2,11 +2,11 @@
 
 ### Exapmles:   
 ```typescript
-import { CacheService } from './index';
+import { TypedCache } from './index';
 import { MemoryEngine } from './Engines/Memory';
 
 // create service for typed cache
-const service = await CacheService.getInstance<string>({
+const service = await TypedCache.getInstance<string>({
   ttl: 1, // in minunts
   engine: new MemoryEngine<string>(),
 });
