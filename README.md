@@ -2,12 +2,11 @@
 
 ### Exapmles:   
 ```typescript
-import { TypedCache } from './index';
-import { MemoryEngine } from './Engines/Memory';
+import { TypedCache,MemoryEngine } from './index';
 
 // create service for typed cache
 const service = await TypedCache.getInstance<string>({
-  ttl: 1, // in minunts
+  ttl: 60000, // in ms
   engine: new MemoryEngine<string>(),
 });
 // set key

@@ -1,19 +1,19 @@
 import { MemoryEngine } from '../Engines/Memory';
-import { CacheService } from '../index';
+import { TypedCache } from '../index';
 
 describe('Check client', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
   test('Instance', async () => {
-    const service = await CacheService.getInstance<string>({
+    const service = await TypedCache.getInstance<string>({
       ttl: 0,
     });
     expect('_ttl' in service).toBe(true);
     expect('_engine' in service).toBe(true);
   });
   test('Check base operations', async () => {
-    const service = await CacheService.getInstance<string>({
+    const service = await TypedCache.getInstance<string>({
       ttl: 1,
       engine: new MemoryEngine<string>(),
     });

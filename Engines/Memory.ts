@@ -19,7 +19,7 @@ export class MemoryEngine<T> extends EngineAbstract<T> {
 
       const tId = setTimeout(() => {
         this._events.emit('refresh', key, fn, refreshTtl);
-      }, refreshTtl * 1000);
+      }, refreshTtl);
       this._timeoutStorage.set(key, tId);
     });
   }
@@ -41,7 +41,7 @@ export class MemoryEngine<T> extends EngineAbstract<T> {
     this._storage.set(key, data);
     const tId = setTimeout(() => {
       this._events.emit('expire', key);
-    }, ttl * 1000);
+    }, ttl);
     this._timeoutStorage.set(key, tId);
     return key;
   }
@@ -53,7 +53,7 @@ export class MemoryEngine<T> extends EngineAbstract<T> {
 
     const tId = setTimeout(async () => {
       this._events.emit('refresh', key, fn, refreshTtl);
-    }, refreshTtl * 1000);
+    }, refreshTtl);
 
     this._timeoutStorage.set(key, tId);
 
